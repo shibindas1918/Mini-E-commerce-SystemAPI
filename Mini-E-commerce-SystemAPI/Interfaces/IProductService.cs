@@ -1,4 +1,5 @@
-﻿using Mini_E_commerce_SystemAPI.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Mini_E_commerce_SystemAPI.Models;
 
 namespace Mini_E_commerce_SystemAPI.Interfaces
 {
@@ -6,5 +7,6 @@ namespace Mini_E_commerce_SystemAPI.Interfaces
     {
          Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<Product> GetProductByIdAsync(int id);
+        Task AddProductAsync([FromBody] Product product);
     }
 }

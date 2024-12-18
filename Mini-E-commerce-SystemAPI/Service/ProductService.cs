@@ -2,6 +2,7 @@
 using Mini_E_commerce_SystemAPI.Models;
 using System.Data;
 using Dapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Mini_E_commerce_SystemAPI.Service
 {
@@ -21,6 +22,10 @@ namespace Mini_E_commerce_SystemAPI.Service
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await _dbConnection.QueryFirstOrDefaultAsync<Product>("SELECT * FROM Products WHERE ProductId = @Id", new { Id = id });
+        }
+        public async Task AddProductAsync([FromBody] Product product)
+        {
+            await _dbConnection.ExecuteAsync("Insert into products (name,Description,Price,StockQuantity)values (@name,@Description,@Price,@StockQuantity)", product);
         }
     }
 }
