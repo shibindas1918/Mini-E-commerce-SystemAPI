@@ -6,7 +6,7 @@ using Mini_E_commerce_SystemAPI.Models;
 
 namespace Mini_E_commerce_SystemAPI.Controllers
 {
-   
+
     [ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
@@ -18,11 +18,11 @@ namespace Mini_E_commerce_SystemAPI.Controllers
             _userService = userService;
         }
         [HttpGet("All-User")]
-        public  async Task<ActionResult<IEnumerable<User>>> Get() 
+        public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             var users = await _userService.GetUsers();
-            return Ok (users.ToList());
-            }
+            return Ok(users.ToList());
+        }
         //[HttpPost("login")]
         //public async Task<IActionResult> Login([FromBody] Models.LoginRequest request)
         //{
@@ -46,7 +46,7 @@ namespace Mini_E_commerce_SystemAPI.Controllers
                 PasswordHash = request.Password,
                 Role = "User"
             };
-            await _userService.RegisterUserAsync(user.Username,user.PasswordHash);
+            await _userService.RegisterUserAsync(user.Username, user.PasswordHash);
             return Ok("User registered successfully.");
         }
     }

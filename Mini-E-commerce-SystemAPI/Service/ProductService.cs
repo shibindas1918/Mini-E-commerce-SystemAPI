@@ -12,7 +12,7 @@ namespace Mini_E_commerce_SystemAPI.Service
         public ProductService(IDbConnection dbConnection)
         {
             _dbConnection = dbConnection;
-            
+
         }
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
