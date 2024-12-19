@@ -41,7 +41,11 @@ namespace Mini_E_commerce_SystemAPI.Service
 
             return user;
         }
-
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            var query = await _dbConnection.QueryAsync<User>("select userid,username,role from users ");
+            return query;
+        }
         // Authenticate user
         public async Task<User> AuthenticateUserAsync(string username, string password)
         {
