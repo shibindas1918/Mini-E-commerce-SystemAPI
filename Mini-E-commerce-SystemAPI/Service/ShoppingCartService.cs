@@ -16,7 +16,8 @@ namespace Mini_E_commerce_SystemAPI.Service
 
         public async Task AddToCartAsync(ShoppingCartItem item)
         {
-            await _dbConnection.ExecuteAsync("INSERT INTO ShoppingCart (UserId, ProductId, Quantity) VALUES (@UserId, @ProductId, @Quantity)", item);
+          await _dbConnection.ExecuteAsync("INSERT INTO ShoppingCart (UserId, Quantity,price) VALUES (@UserId, @Quantity, @price)", item);
+      
         }
 
         public async Task RemoveFromCartAsync(ShoppingCartItem item)

@@ -15,13 +15,28 @@ namespace Mini_E_commerce_SystemAPI.Controllers
         {
             _orderService = orderService;
         }
-        [HttpPost]
-        public IActionResult CreateOrders(int userid )
+  
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateOrder(int userId)
         {
-           var order =  _orderService.CreateOrderAsync(userid);
-            return Ok (order);  
+            try
+            {
+                var order = await _orderService.CreateOrderAsync(userId);
+                return Ok(new
+                {
+                    Message = "Order created successfully.",
+                    OrderDetails = order
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new
+                {
+                    Message = "Failed to create order.",
+                    Error = ex.Message
+                });
+            }
 
         }
-
     }
 }
