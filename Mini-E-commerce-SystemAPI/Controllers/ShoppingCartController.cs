@@ -15,6 +15,8 @@ namespace Mini_E_commerce_SystemAPI.Controllers
             _shoppingCart = shoppingCart;
 
         }
+
+        //Method to Add products to cart 
         [HttpPost]
         public ActionResult AddCart(ShoppingCartItem cart)
         {
