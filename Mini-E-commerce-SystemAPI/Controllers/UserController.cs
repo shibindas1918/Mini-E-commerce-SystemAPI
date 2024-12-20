@@ -17,12 +17,16 @@ namespace Mini_E_commerce_SystemAPI.Controllers
         {
             _userService = userService;
         }
+
+        //Method for Getting all users in the database 
         [HttpGet("All-User")]
         public async Task<ActionResult<IEnumerable<User>>> Get()
         {
             var users = await _userService.GetUsers();
             return Ok(users.ToList());
         }
+
+        //Post Method of Login For User 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Models.LoginRequest request)
         {
@@ -51,7 +55,7 @@ namespace Mini_E_commerce_SystemAPI.Controllers
         //    var token = $"mock-jwt-token-for-{user.Username}";
         //    return Ok(new { Token = token });
         //}
-
+        // Post Method for Registering new User 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] Models.RegisterRequest request)
         {
