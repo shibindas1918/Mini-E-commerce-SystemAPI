@@ -23,6 +23,21 @@ namespace Mini_E_commerce_SystemAPI.Controllers
             _shoppingCart.AddToCartAsync(cart);
             return Ok("Item has been Added ");
         }
+
+        [HttpPost("remove")]
+        public async Task<IActionResult> RemoveFromCart([FromBody] ShoppingCartItem item)
+        {
+            await _shoppingCart.RemoveFromCartAsync(item);
+            return Ok();
+        }
+
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetCart(int userId)
+        {
+            var cartItems = await _shoppingCart.GetCartItemsAsync(userId);
+            return Ok(cartItems);
+        }
+
     }
 
 }

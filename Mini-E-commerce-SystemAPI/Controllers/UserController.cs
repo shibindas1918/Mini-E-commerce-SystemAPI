@@ -23,6 +23,21 @@ namespace Mini_E_commerce_SystemAPI.Controllers
             var users = await _userService.GetUsers();
             return Ok(users.ToList());
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] Models.LoginRequest request)
+        {
+            var user = await _userService.AuthenticateUserAsync(request.Username, request.Password);
+            if (user == null)
+            {
+                return Unauthorized("Invalid username or password.");
+            }
+
+            // Generate JWT token (mocked for now)
+            var token = $"mock-jwt-token-for-{user.Username}";
+            return Ok(new { Token = token });
+        }
+
+
         //[HttpPost("login")]
         //public async Task<IActionResult> Login([FromBody] Models.LoginRequest request)
         //{
