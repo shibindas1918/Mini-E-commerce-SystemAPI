@@ -41,6 +41,7 @@ namespace Mini_E_commerce_SystemAPI.Service
 
             return user;
         }
+        //Method to get all users in the Database 
         public async Task<IEnumerable<User>> GetUsers()
         {
             var query = await _dbConnection.QueryAsync<User>("select userid,username,role from users ");
