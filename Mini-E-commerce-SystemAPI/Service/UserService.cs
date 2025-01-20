@@ -32,7 +32,7 @@ namespace Mini_E_commerce_SystemAPI.Service
             {
                 Username = username,
                 PasswordHash = passwordHash,
-                Role = "Customer" // Default role for now
+                Role = "Customer" // Default role
             };
 
             // Insert into Users table
